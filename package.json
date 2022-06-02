@@ -1,0 +1,12 @@
+{
+  "name": "lojabazar",
+  "version": "1.0.0",
+  "description": "Trabalho de AV1 5TAV",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Gabriel Delgado",
+  "license": "ISC"
+}
