@@ -14,5 +14,8 @@
     "jest": "^28.1.0",
     "ts-jest": "^28.0.3",
     "ts-node": "^10.8.0"
+  },
+  "dependencies": {
+    "typeorm": "^0.3.6"
   }
 }
