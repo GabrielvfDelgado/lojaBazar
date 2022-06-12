@@ -16,6 +16,7 @@
     "ts-node": "^10.8.0"
   },
   "dependencies": {
+    "sqlite3": "^5.0.8",
     "typeorm": "^0.3.6"
   }
 }
