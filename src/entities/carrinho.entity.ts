@@ -22,6 +22,8 @@ export class Carrinho {
   @Column()
   frete: number;
 
-  @OneToMany(() => ItemCarrinho, (ItemCarrinho) => ItemCarrinho.carrinho)
+  @OneToMany(() => ItemCarrinho, (ItemCarrinho) => ItemCarrinho.carrinho, {
+    cascade: true,
+  })
   itens: ItemCarrinho[];
 }

@@ -4,8 +4,10 @@ import {
   Column,
   ManyToOne,
   JoinColumn,
+  OneToOne,
 } from "typeorm";
 import { Carrinho } from "./carrinho.entity";
+import { Produto } from "./produto.entity";
 
 @Entity()
 export class ItemCarrinho {
@@ -30,6 +32,10 @@ export class ItemCarrinho {
   @ManyToOne(() => Carrinho, (Carrinho) => Carrinho.itens)
   @JoinColumn({ name: "idCarrinho" })
   carrinho: Carrinho;
+
+  @OneToOne(() => Produto)
+  @JoinColumn({ name: "idProduto" })
+  produto: Produto;
 
   simularFrete(): number {
     return 0;
