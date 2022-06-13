@@ -22,7 +22,7 @@ export class CarrinhoService {
   }
 
   async procuraCliente(idCliente: number) {
-    let cliente = await this.repositorio.findOne({
+    let cliente = await this.repositorioCliente.findOne({
       where: {
         id: idCliente,
       },
@@ -85,5 +85,18 @@ export class CarrinhoService {
     cliente.pedidos.push(pedido);
     await this.repositorioCliente.save(cliente);
     return cliente;
+  }
+
+  async fazerPagamento(idCliente: number, valorPagamento: number) {
+    let cliente = await this.procuraCliente(idCliente);
+    if (cliente == null) {
+      return 0;
+    }
+
+    if (cliente.pedidos[0].valorTotal == valorPagamento) {
+      return 200;
+    } else {
+      return 401;
+    }
   }
 }

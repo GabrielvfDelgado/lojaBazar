@@ -83,5 +83,22 @@ describe("Carrinho service", () => {
     expect(frete).toBe(12.5);
   });
 
-  it("Fazer Pagamento", async () => {});
+  it("Fazer Pagamento", async () => {
+    const produto1 = new Produto();
+    produto1.preco = 10.0;
+    jest.spyOn(repositorio, "findOne").mockResolvedValueOnce(null);
+    const carrinhoExistente = await service.addItemCarrinho(1, produto1);
+
+    jest.spyOn(repositorio, "findOne").mockResolvedValueOnce(carrinhoExistente);
+    const frete = await service.calculaFrete(1, 10.5);
+
+    const cliente = new Cliente();
+    cliente.nome = "Gabriel";
+    jest.spyOn(repositorio, "findOne").mockResolvedValueOnce(carrinhoExistente);
+    const fecharPedido = await service.fecharPedido(1, cliente);
+
+    jest.spyOn(repositorioCliente, "findOne").mockResolvedValueOnce(cliente);
+    const pagamento = await service.fazerPagamento(1, 22.5);
+    expect(pagamento).toBe(200);
+  });
 });
