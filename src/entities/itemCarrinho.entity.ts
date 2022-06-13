@@ -38,6 +38,6 @@ export class ItemCarrinho {
   produto: Produto;
 
   simularFrete(): number {
-    return 0;
+    return 2;
   }
 }

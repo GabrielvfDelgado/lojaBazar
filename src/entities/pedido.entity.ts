@@ -5,6 +5,7 @@ import {
   ManyToOne,
   JoinColumn,
 } from "typeorm";
+import { Cliente } from "./cliente.entity";
 
 @Entity()
 export class Pedido {
@@ -20,11 +21,15 @@ export class Pedido {
   @Column()
   idEntrega: number;
 
-  CalcularValorTotalPedido(): number {
-    return 0;
+  @ManyToOne(() => Cliente, (Cliente) => Cliente.pedidos)
+  @JoinColumn({ name: "idCliente" })
+  cliente: Cliente;
+
+  CalcularValorTotalPedido(valorTotal: number): number {
+    return valorTotal;
   }
 
-  CalcularValorTotalFrete(): number {
-    return 0;
+  CalcularValorTotalFrete(valorFrete: number): number {
+    return valorFrete;
   }
 }

@@ -6,9 +6,10 @@ import {
   ManyToOne,
   OneToMany,
 } from "typeorm";
+import { Pedido } from "./pedido.entity";
 
 @Entity()
-export class Carrinho {
+export class Cliente {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -17,4 +18,9 @@ export class Carrinho {
 
   @Column()
   cpf: number;
+
+  @OneToMany(() => Pedido, (Pedido) => Pedido.idCliente, {
+    cascade: true,
+  })
+  pedidos: Pedido[];
 }
