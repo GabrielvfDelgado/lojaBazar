@@ -24,6 +24,7 @@ export class ClienteService {
     cliente.nome = nome;
     cliente.cpf = cpf;
     console.log(cliente);
+    await this.repositorio.save(cliente);
     return cliente;
   }
 }
